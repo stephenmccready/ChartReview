@@ -1,0 +1,29 @@
+#crList {height: 25em; border:1px solid #000; margin: 0 0 0.75em 0;}
+#crListHeader {margin: 0.75em 0 0 0; padding-left:20px; font-weight: bold;}
+.diag {margin: 0 0 0.5em 0;}
+.fa-div {margin-top: 0.15em; font-size: 120%;}	
+.error_show {border-color: red;}
+#wholepage {margin-top: 0.5em; margin-bottom: 2em;}
+.crID {width: 5%;}
+.crDate {width: 15%;}
+.crName {width: 30%;}
+.crProv {width: 35%;}
+.badge {width: 15%}
+#providerTable {width:100%; border-collapse: collapse;}
+.prvID {width: 15%;}
+.prvFirst {width: 35%;}
+.prvLast {width: 35%;}
+.prvNPI {width: 15%}
+.errorMessage {color:red; font-size: 14px;}
+.confirmation {margin-top: 0.75em;}
+.confirmation h6 {font-weight: bold; background: #F0F8FF; padding: 0.35em;}
+h4 {width:100%; text-align:center; margin-bottom: 0;}
+#hideme {display: none;}
+#memberPickList {height: 15em; background-color:#FFFFCC;}
+#providerPickListContainer {height: 15em; background-color:#FFFFCC; overflow: auto;}
+#memberOK {color:#008000;}
+#memberNOTOK {color:#FF0000;}
+#providerOK {color:#008000;}
+#providerNOTOK {color:#FF0000;}
+#encounterOK {color:#008000;}
+#encounterNOTOK {color:#FF0000;}
