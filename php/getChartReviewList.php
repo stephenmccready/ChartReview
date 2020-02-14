@@ -18,9 +18,9 @@ if ($result->num_rows > 0)
 	while($record = $result->fetch_assoc())
 	{
 		switch ($record['ChartReviewStatusID']){
-			case 0:	$badgeStatus = 'warning';	$onclick='onclick="editChartReview(' . $record['ChartReviewID'] . ')"';	$lock='<i class="fas fa-lock-open"></i>'; break;
-			case 1:	$badgeStatus = 'success';	$onclick='';	$lock='<i class="fas fa-lock"></i>'; break;
-			case 2:	$badgeStatus = 'danger';	$onclick='';	$lock='<i class="fas fa-lock"></i>'; break;
+			case 0:	$badgeStatus = 'warning';	$onclick='onclick="editChartReview(' . $record['ChartReviewID'] . ')"';	$lock='<i class="fas fa-notes-medical"></i>'; break;
+			case 1:	$badgeStatus = 'success';	$onclick='onclick="viewChartReview(' . $record['ChartReviewID'] . ',\'Processed\',\'success\')"';	$lock='<i class="fas fa-lock"></i>'; break;
+			case 2:	$badgeStatus = 'danger';	$onclick='onclick="viewChartReview(' . $record['ChartReviewID'] . ',\'Void\',\'danger\')"';	$lock='<i class="fas fa-lock"></i>'; break;
 		}
 
 		echo  '<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" ' . $onclick . '>';
@@ -29,7 +29,7 @@ if ($result->num_rows > 0)
 		echo  '<span class="crDate">' . date_format($date, "m/d/Y") . '</span>';
 		echo  '<span class="crName">' . $record['PersonFirstName'] . ' ' . $record['PersonLastName'] . '</span>';
 		echo  '<span class="crProv">' . $record['ProviderFirstName'] . ' ' . $record['ProviderLastName'] . '</span>';
-		echo  '<span class="badge badge-pill badge-' . $badgeStatus . '">' . $lock . ' ' . $record['ChartReviewStatus'] . '</span></a>';
+		echo  '<span class="badge badge-pill badge-' . $badgeStatus . '">' . $lock . '&nbsp;' . $record['ChartReviewStatus'] . '</span></a>';
 	}
 } else {
 	echo 0;
