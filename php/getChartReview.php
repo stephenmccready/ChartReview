@@ -1,7 +1,7 @@
 <?php
 include ("mysqli.php");
 
-$q="SELECT CR.*, P.PersonFirstName, P.PersonLastName, P.PersonDateOfBirth, PRV.NPI, PRV.ProviderFullName, CRS.ChartReviewStatus, L.SourcePersonKey As MemberID, MBI.SourcePersonKey As MBI, HICN.SourcePersonKey As HICN
+$q="SELECT CR.*, P.PersonFirstName, P.PersonLastName, P.PersonDateOfBirth, PRV.NPI, PRV.ProviderFullName, CRS.ChartReviewStatus, L.SourcePersonKey As MemberID, MBI.SourcePersonKey As MBI, HICN.SourcePersonKey As HICN, CR.procedureCode, CR.notes 
 FROM factChartReview As CR 
 Join factPerson As P on P.MasterPersonID = CR.MasterPersonId 
 Join factProvider As PRV on PRV.MasterProviderID = CR.MasterProviderId 
@@ -29,17 +29,17 @@ if ($result->num_rows > 0)
 		$date=date_create($record['PersonDateOfBirth']);
 		$output .= date_format($date, "Y-m-d") . '|';
 		$output .= $record['MemberID'] . '|' . $record['MBI'] . '|' . $record['HICN'] . '|';
-		$output .= $record['ChartReviewStatus'] . '|' . $record['ProviderFullName'] . '|' . $record['NPI'] . '|' . $record['MasterPersonID'] . '|' . $record['ChartReviewID'] . '|';
+		$output .= $record['ChartReviewStatus'] . '|' . $record['ProviderFullName'] . '|' . $record['NPI'] . '|' . $record['MasterPersonId'] . '|' . $record['ChartReviewID'] . '|' . $record['procedureCode'] . '|' . urldecode($record['notes']) . '|' . $record['MasterProviderId'];
 	}
 	
-	$q2="SELECT DiagnosisCode, HCC_Code FROM factChartReviewDiagnosis Where ChartReviewID = " . $_GET['ChartReviewID'];
+	$q2="SELECT ChartReviewDiagnosisID, DiagnosisCode, HCC_Code FROM factChartReviewDiagnosis Where ChartReviewID = " . $_GET['ChartReviewID'];
 	$result2 = $connect->query($q2);
 	
 	if ($result2->num_rows > 0)
 	{
 		while($record2 = $result2->fetch_assoc())
 		{
-			$output .= $record2['DiagnosisCode'] . '|';
+			$output .= '|' . $record2['ChartReviewDiagnosisID'] . '|' . $record2['DiagnosisCode'] . '|' . $record2['HCC_Code'];
 		}
 	}
 	echo $output;
