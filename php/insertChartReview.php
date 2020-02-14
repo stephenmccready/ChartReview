@@ -4,7 +4,7 @@ include ("mysqli.php");
 $mysqltime = date ("Y-m-d H:i:s"); 
 $mysqlDOS = date ("Y-m-d H:i:s", strtotime($_GET['dateOfService'])); 
 
-$qA="INSERT INTO factChartReview(MasterPersonId, MasterProviderId, dateOfService, procedureCode, procedureCodeType, ChartReviewStatusID, dateVoided, voidedBy, RAPSSubmissionFlag, EDPSSubmissionFlag, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $_GET['MasterPersonId'] ."," . $_GET['MasterProviderId'] .",'" . $mysqlDOS ."','" . $_GET['procedureCode'] ."','" . $_GET['procedureCodeType'] ."'," . $_GET['ChartReviewStatusID'] .",null,null,null,null,'" . $mysqltime ."','" . $_GET['createdBy'] ."',null,null)";
+$qA="INSERT INTO factChartReview(MasterPersonId, MasterProviderId, dateOfService, procedureCode, procedureCodeType, ChartReviewStatusID, notes, dateVoided, voidedBy, RAPSSubmissionFlag, EDPSSubmissionFlag, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $_GET['MasterPersonId'] ."," . $_GET['MasterProviderId'] .",'" . $mysqlDOS ."','" . $_GET['procedureCode'] ."','" . $_GET['procedureCodeType'] . "'," . $_GET['ChartReviewStatusID'] . ",'" . urlencode($_GET['notes']) . "',null,null,null,null,'" . $mysqltime ."','" . $_GET['createdBy'] ."',null,null)";
 
 $resultA = $connect->query($qA);
 
@@ -15,39 +15,39 @@ $qB="SELECT Max(ChartReviewID) AS ChartReviewID FROM factChartReview WHERE Maste
 $resultB = $connect->query($qB);
 $record = $resultB->fetch_assoc();
 
-$q1="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag01'] . "','10','" . $_GET['HCC01'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
+$q1="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag1'] . "','10','" . $_GET['HCC1'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
 $result1 = $connect->query($q1);
 
-if($_GET['diag02'] != '') {
-	$q2="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag02'] . "','10','" . $_GET['HCC02'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
+if($_GET['diag2'] != '') {
+	$q2="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag2'] . "','10','" . $_GET['HCC2'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
 	$result2 = $connect->query($q2);
 
-	if($_GET['diag03'] != '') {
-		$q3="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag03'] . "','10','" . $_GET['HCC03'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
+	if($_GET['diag3'] != '') {
+		$q3="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag3'] . "','10','" . $_GET['HCC3'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
 		$result3 = $connect->query($q3);
 
-	if($_GET['diag04'] != '') {
-		$q4="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag04'] . "','10','" . $_GET['HCC04'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
+	if($_GET['diag4'] != '') {
+		$q4="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag4'] . "','10','" . $_GET['HCC4'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
 		$result4 = $connect->query($q4);
 
-	if($_GET['diag05'] != '') {
-		$q5="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag05'] . "','10','" . $_GET['HCC05'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
+	if($_GET['diag5'] != '') {
+		$q5="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag5'] . "','10','" . $_GET['HCC5'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
 		$result5 = $connect->query($q5);
 
-	if($_GET['diag06'] != '') {
-		$q6="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag06'] . "','10','" . $_GET['HCC06'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
+	if($_GET['diag6'] != '') {
+		$q6="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag6'] . "','10','" . $_GET['HCC6'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
 		$result6 = $connect->query($q6);
 
-	if($_GET['diag07'] != '') {
-		$q7="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag07'] . "','10','" . $_GET['HCC07'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
+	if($_GET['diag7'] != '') {
+		$q7="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag7'] . "','10','" . $_GET['HCC7'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
 		$result7 = $connect->query($q7);
 
-	if($_GET['diag08'] != '') {
-		$q8="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag08'] . "','10','" . $_GET['HCC08'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
+	if($_GET['diag8'] != '') {
+		$q8="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag8'] . "','10','" . $_GET['HCC8'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
 		$result8 = $connect->query($q8);
 
-	if($_GET['diag09'] != '') {
-		$q9="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag09'] . " ','10','" . $_GET['HCC09'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
+	if($_GET['diag9'] != '') {
+		$q9="INSERT INTO factChartReviewDiagnosis(ChartReviewID, DiagnosisCode, DiagnosisCodeType, HCC_Code, dateCreated, createdBy, dateLastUpdated, lastUpdatedBy) VALUES (" . $record['ChartReviewID'] . ",'" . $_GET['diag9'] . " ','10','" . $_GET['HCC9'] . "','" . $mysqltime . "','" . $_GET['createdBy'] ."',null,null)";
 		$result9 = $connect->query($q9);
 
 	if($_GET['diag10'] != '') {
