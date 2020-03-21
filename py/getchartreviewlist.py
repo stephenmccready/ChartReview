@@ -4,7 +4,7 @@ import sys
 filteryear = sys.argv[1]
 filtermonth = sys.argv[2]
 filterstatus = sys.argv[3]
-cnxn = pyodbc.connect(config.cnxnstr)
+cnxn = pyodbc.connect(dbconfig.cnxnstr)
 cursor = cnxn.cursor()
 sql = "SELECT CR.*,P.PersonFirstName,P.PersonLastName,P.PersonDateOfBirth,"
 sql += "NPI.NPI,PRV.ProviderFullName,CRS.ChartReviewStatus,PRV.ProviderFirstName,PRV.ProviderLastName"
