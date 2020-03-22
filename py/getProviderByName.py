@@ -18,7 +18,7 @@ rowCount = 0
 for row in cursor:
     rowCount += 1
     fieldArray = row
-    print (str(fieldArray[0]) + "|" + fieldArray[1] + "|" + fieldArray[2] + "|" + fieldArray[3] + "|" + str(fieldArray[4]))
+    print (str(fieldArray[0]) + "|" + fieldArray[1] + "|" + fieldArray[2] + "|" + fieldArray[3] + "|" + str(fieldArray[4]) + '~')
 
 if rowCount == 0:
     print (0)
