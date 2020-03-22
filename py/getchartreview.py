@@ -74,7 +74,7 @@ for row in cursor:
     output += str(fieldArray[1]) + '|' + str(chartreviewid) + '|' + fieldArray[4] + '|' + str(fieldArray[26]) + '||'
     
 if rowCount == 0:
-    print 0
+    print (0)
 else:
     cnxn2 = pyodbc.connect(sandboxconfig.sandboxcnxnstr)
     cursor2 = cnxn2.cursor()
