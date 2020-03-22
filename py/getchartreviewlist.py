@@ -70,4 +70,4 @@ for row in cursor:
     print '<span class="badge badge-pill badge-' + badgeStatus + '">' + lock + '&nbsp;' + fieldArray[20] + '</span></a>'
 
 if rowCount == 0:
-    print 0
+    print (0)
