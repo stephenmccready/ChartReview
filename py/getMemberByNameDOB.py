@@ -1,11 +1,11 @@
 import pyodbc
-import sandboxconfig
+import dbconfig
 import sys
 mnamelast = sys.argv[1]
 mnamefirst = sys.argv[2]
 mdob = sys.argv[3]
 
-cnxn = pyodbc.connect(sandboxconfig.sandboxcnxnstr)
+cnxn = pyodbc.connect(dbconfig.sandboxcnxnstr)
 cursor = cnxn.cursor()
 sql = "SELECT P.MasterPersonID,P.MasterPersonID,P.PersonFirstName,P.PersonLastName,P.PersonDateOfBirth,M.SourcePersonKey As MemberID,MBI.SourcePersonKey As MBI,HICN.SourcePersonKey As HICN"
 sql += " FROM factPerson As P"
